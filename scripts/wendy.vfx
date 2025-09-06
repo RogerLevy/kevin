@@ -1,0 +1,6 @@
+class: wendy
+    actor derive
+wendy :: init
+    wendy.png bmp ! ;
+
+class;
