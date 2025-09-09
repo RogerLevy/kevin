@@ -24,15 +24,11 @@
 : quest
     entrance game ;
 : restart ( - )
-    blank blank new quest ;
+    game blank blank new quest ;
 : boot-kevin ( - )
     init-supershow 
     0 gamelife !
-    debug @ if
-        new quest
-    else
-        save-exists? if resume game else title then
-    then ;
+    save-exists? if resume game else title then ;
 : ?save
     can-save @ -exit debug @ ?exit save ;
 

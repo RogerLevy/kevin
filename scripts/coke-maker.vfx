@@ -7,16 +7,20 @@ class: coke-maker
 class;
 
 : *coke  me 0 -20 from  coke one kids ! ;
+: ?oob   y @ gameh >. > if me unload   0 you -> kids ! then ;
+
+public
 
 : init-coke-maker  ( n - )
     period ! 
     coke.ts 0 tile bmp !  
     act>
         bmp off
-        1.0 passed? -exit  *coke
+        1.0 passed? -exit  
+        *coke
     act>
-        kids @ 0= if  period @ passed? -exit  *coke then 
-        kids @ if  kids @ coke is? not if 0 kids ! then  then ;
+        kids @ 0= if period @ passed? -exit *coke  
+        else kids @ [[ ?oob ]] then ;
 
 coke-maker :: init
     3000 init-coke-maker ;

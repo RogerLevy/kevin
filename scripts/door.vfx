@@ -6,17 +6,25 @@ class: door
     
     prop dest <save <int \ room #
     prop kind <save <int 
-        0 constant brass
-        1 constant concrete
-        2 constant jade
-        3 constant chrome
-
     prop lockstate <save <int 
-        0 constant unlocked
-        1 constant locked
-        2 constant oneway
 
 class;
+
+public
+order
+
+\ kinds
+0 constant brass
+1 constant concrete
+2 constant jade
+3 constant chrome
+
+\ lockstates
+0 constant unlocked
+1 constant locked
+2 constant oneway
+
+private
 
 door-g.png 40 20 +tileset door-g.ts
 door-s.png 40 20 +tileset door-s.ts
