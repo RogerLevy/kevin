@@ -1,6 +1,9 @@
 require scripts\kevin.vfx
 
-class kevin-spawner%
+class: kevin-spawner
+    actor derive
+class;
+
 kevin-spawner :: init
     kevin.ts 0 tile bmp !
     x 2@ 2.> start-xy 2!

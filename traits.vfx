@@ -1,0 +1,4 @@
+trait: openable
+    :: open ( - ) ;
+    :: close ( - ) ;
+trait;

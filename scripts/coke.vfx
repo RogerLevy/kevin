@@ -1,6 +1,6 @@
 require scripts\fireball.vfx
 
-coke.png 16 16 tileset coke.ts
+coke.png 16 16 +tileset coke.ts
 
 class: coke
     actor derive

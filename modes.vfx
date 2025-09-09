@@ -1,0 +1,4 @@
+require %idir%\title.vfx
+require %idir%\death.vfx
+require %idir%\game.vfx
+require %idir%\subscreen.vfx

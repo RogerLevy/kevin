@@ -1,4 +1,6 @@
-public class lighter
+class: lighter
+    actor derive
+class;
 
 lighter :: init
     lighter.png bmp !

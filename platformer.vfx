@@ -4,30 +4,38 @@
 \ WIP
 \ ------------------------------------------------------------------------------
 
-prop hp <int save
-prop fac <int save
-prop falling <save
-prop in-air <save
-prop climbing <save
+trait: platformer
+    prop hp <int <save
+    prop fac <int <save
+    prop falling <save
+    prop in-air <save
+    prop climbing <save
+    prop gravity <save <fixed
+    prop terminal-vy <save <fixed
+    prop jumppower <save <fixed
+    prop risepower <save <fixed
+    prop walkspeed <save <fixed
+    prop inertia <save <fixed
 
-static gravity
-static terminal-vy
-static jumppower 
-static risepower 
-static walkspeed
-static inertia
+    :: _walk  drop ;  
+    :: _jump ;        
+    :: _squat ;       
+    :: _idle ;        
+    :: _fall ;        
+    :: burn ;
+    :: _climb ;       
+    :: collide  drop ;
+trait;
 
-m: _walk  drop ;  : walk  me _walk ;
-m: _jump ;        : jump  in-air on  me _jump ;
-m: _squat ;       : squat  me _squat ;
-m: _idle ;        : idle  me _idle ;
-\ m: _die ;         : die  me _die ;
-m: _fall ;        
-\ m: kill ;
-m: burn ;
-m: _climb ;       : climb me _climb ;
-m: collide  drop ;
+class: actor
+    works-with platformer
+class;
 
+: walk  me _walk ;
+: jump  in-air on  me _jump ;
+: squat  me _squat ;
+: idle  me _idle ;
+: climb me _climb ;
 : revive   100 hp ! idle ;
 : fall
     in-air on

@@ -8,7 +8,7 @@ variable item#
 4 constant #items
 create subscreen.txt  s" subscreen.txt" file, 0 c,
     \ A bit of conversion
-    -- : clean
+    || : clean
         begin dup c@ ?dup while
             $d = if $20 over c! then
             1 +

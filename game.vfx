@@ -1,10 +1,7 @@
-require title.vfx
-require death.vfx
-require subscreen.vfx
-require savegame.vfx
-include %idir%\..\supershow\ui\ui.vfx
+\ require %vfxland5%\supershow\ui\ui.vfx
 
-root [[ object% el: kevin-ui [[ ]] ]]
+\ root [[ object% el: kevin-ui [[ ]] ]]
+
 : ?info  debug @ -exit 0 0 at s[ room# ? s] print ;
 : hud  303 17 at current-item ;
 : render  crt> backsprites bg sprites hud ?info animate ;
@@ -21,9 +18,9 @@ root [[ object% el: kevin-ui [[ ]] ]]
     0.5 timer> p1 [[ appear ]] s" emerge" evaluate ;
 : game
     can-save on
-    kevin-ui isolate
+\    kevin-ui isolate
     show>
-        ?subscreen think render ui ;
+        ?subscreen think render ; \ ui ;
 : quest
     entrance game ;
 : restart ( - )

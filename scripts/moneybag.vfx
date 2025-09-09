@@ -1,7 +1,7 @@
 class: moneybag
     actor derive
 
-: #moneybags  0 actives> me moneybag% is? -exit 1 + ;
+: #moneybags  0 actives> me moneybag is? -exit 1 + ;
 
 : ?collect  p1 me hit? if s" get-moneybag" evaluate me unload ( ?win ) then ;
 : ?hidden?  x 2@ 2.> gap dup 2/ bg0 spot @ 0<> dup not moneybag.png and bmp ! ;
@@ -12,7 +12,7 @@ moneybag :: init
 
 public
 
-: enlighten  actives>  me moneybag% is? -exit appear ;
-: veil  actives>  me moneybag% is? -exit vanish ;
+: enlighten  actives>  me moneybag is? -exit appear ;
+: veil  actives>  me moneybag is? -exit vanish ;
 
 class;

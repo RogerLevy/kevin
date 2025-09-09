@@ -1,9 +1,9 @@
 require scripts\door.vfx \ shares some public stuff
 
 class: bigdoor
-    actor derive
+    door derive
 
-door-big.png 50 50 tileset bigdoor.ts
+door-big.png 50 50 +tileset bigdoor.ts
 bigdoor.ts animation bigdoor-open.anm  0 5 range,
 bigdoor.ts animation bigdoor-close.anm  5 0 range,
 
@@ -17,8 +17,8 @@ bigdoor :: init
     bigdoor-open.anm 0 cycle 0 h| a.flp !
     jade kind ! -14 0 28 30 hitbox! stand
     idle ;
+
 bigdoor :: _idle  act> ?enter ;
-bigdoor :: peeked  kind ? ." kind ! " dest ? ." dest ! " ;
 
 bigdoor :: open 
     *creak*

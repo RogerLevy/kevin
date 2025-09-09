@@ -1,6 +1,8 @@
-crumble1.png 20 20 tileset crumble1.ts
+crumble1.png 20 20 +tileset crumble1.ts
 
-class crumble1%
+class: crumble1
+    actor derive
+class;
 
 crumble1.ts animation crumble.anm 0 21 range,
 

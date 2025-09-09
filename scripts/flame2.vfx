@@ -1,6 +1,8 @@
-class flame2%
+class: flame2
+    actor derive
+class;
 
-flame2.png 20 20 tileset flame2.ts
+flame2.png 20 20 +tileset flame2.ts
 flame2.ts animation flame2.anm 0 15 range,
 
 flame2 :: init

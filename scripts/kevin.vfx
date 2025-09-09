@@ -5,7 +5,7 @@ require scripts\door.vfx
 require scripts\crumble1.vfx
 public
 
-kevin.png 20 20 tileset kevin.ts
+kevin.png 20 20 +tileset kevin.ts
 kevin.ts animation idle.anm    0 0   range,
 kevin.ts animation squat.anm   1 10  range,
 kevin.ts animation stand.anm   10 1  range,
@@ -18,9 +18,12 @@ kevin.ts animation jump.anm    36 36 range,
 kevin.ts animation climb.anm   40 42 range, 40 h| 42 h| range,
 kevin.ts animation hurtle.anm  39 frame, 32 frame, 39 hv| frame, 32 hv| frame, 
 
-kevin-runover.png 180 20 tileset kevin-runover.ts
+kevin-runover.png 180 20 +tileset kevin-runover.ts
 kevin-runover.ts animation kevin-runover1.anm 0 2 range,
 kevin-runover.ts animation kevin-runover2.anm 3 12 range, 11 frame,
+
+kevin-burn.png 40 40 +tileset kevin-burn.ts
+kevin-burn.ts animation burn.anm 0 1 range,
 
 private
 
@@ -99,7 +102,7 @@ private
 
 : use-lighter 
     s" enlighten" evaluate *zelda7*
-    me 15 ?neg 0 from flame2% one [[ ]] ;
+    me 15 ?neg 0 from flame2 one [[ ]] ;
     
 : ?use
     <use> pressed? -exit
@@ -115,7 +118,7 @@ public
     0 hp !
     red-flash
     y @ gap 2 / >. - gap >. mod gap >. swap - y +!
-    halt float anm off 28 kevin.ts swap tile bmp !
+    halt floating anm off 28 kevin.ts swap tile bmp !
     act> 3.0 passed? -exit
     s" death" evaluate ;
 
@@ -147,7 +150,7 @@ public
 
 : ?-  vx @ 0< if negate then ;
 : hop
-    x @ gap >. ?- + n1 ! 2. ?- 0 vx 2! float  
+    x @ gap >. ?- + n1 ! 2. ?- 0 vx 2! floating  
     act>
         vx @ 0< if x @ n1 @ <= -exit
                 else x @ n1 @ >= -exit then
@@ -217,9 +220,6 @@ kevin :: _fall
 
 \ ------------------------------------------------------------------------------
 
-kevin-burn.png 40 40 tileset kevin-burn.ts
-kevin-burn.ts animation burn.anm 0 1 range,
-
 : ?fall
     fac @ left = if
         vx @ .001 + 0 max vx ! else
@@ -231,7 +231,7 @@ kevin :: burn
     0 hp !
     s" dying" evaluate  \ disables some functions
     burn.anm .5 cycle
-    halt float
+    halt floating
     fac @ left = if  .5 -0.6 vx 2!  else  -.5 -0.6 vx 2!  then
     act> ?fall 0.5 passed? -exit  
     act> ?fall gamelife @ 1 and if bmp off then 1.0 passed? -exit
@@ -267,7 +267,7 @@ public
 : ?kevin ( - actor )
     find-kevin ?dup ?exit
     start-xy 2@ at
-    512 priority kevin% one to p1 0 priority
+    512 priority kevin one to p1 0 priority
     p1 ;
 
 : emerge ( - ) \ get kevin, find door, if it exists emerge from it
@@ -287,14 +287,12 @@ private 0 value d public
 
 : ?warp  ?dup 0= if start# then warp ;
 
-prop dest
-
 : enter ( - ) \ me = door, p1 = kevin
     ['] roomcol2 phys !
     me open  me to d
     x 2@ -2. 0 2+ p1 -> x 2!
     p1 as>
-        fac @ fac2 !  right fac ! !flip  halt  float
+        fac @ fac2 !  right fac ! !flip  halt  floating
         me 22 0 from  *coverup drop 0 priority
         idle.anm 1. cycle
         act> 0.1 passed? -exit  
@@ -311,7 +309,7 @@ private
 : smear ( - )        
     hp @ -exit
     0 hp !
-    halt float
+    halt floating
     right fac ! !flip
     kevin-runover1.anm 0.5 cycle
     act> a.done @ -exit 

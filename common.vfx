@@ -15,19 +15,27 @@ debug @ [if] <enter> [else] <esc> [then] constant <subscreen>
 dummy value p1
 create start-xy 160 , 120 , 
 variable #deaths
-prop can-travel
+
+class: actor
+    prop can-travel
+class;
+
 create item$ 17 allot&erase 
 variable can-save
 
 \ Extensions
 : spawn  swap for me 0 0 from dup one drop loop drop ;
+: in? ( - f )
+    x @ 0. gamew >. within?
+    y @ 0. gameh >. within? and ;
+: ?out ( - ) in? not if me unload then ;
 
 \ Platforming
 include platformer.vfx 
 
 \ Global assets
 \ bgm bgm1 crack.xm 
-bg.png 20 20 tileset bg.ts
+bg.png 20 20 +tileset bg.ts
 bg.ts 0 tile pile !
 s" gfx\bg.dat" bg.ts load-metas 
 

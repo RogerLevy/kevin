@@ -1,9 +1,12 @@
 require scripts\flame.vfx
 
-prop kids
+class: flame-maker-r
+    actor derive
+    prop kids
+class;
 
-class flame-maker-r%
-: *flame  flame% one dup [[ right fac ! ]] ;
+: *flame  flame one dup [[ right fac ! ]] ;
+
 flame-maker-r :: init
     flame.ts 0 tile bmp !  
     act>

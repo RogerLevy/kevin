@@ -1,2 +1,4 @@
-include fx.vfx              \ common effects for the game
-include savegame.vfx        \ save and load the game state
+include %idir%\traits.vfx
+include %idir%\common.vfx
+include %idir%\fx.vfx              \ common effects for the game
+include %idir%\savegame.vfx        \ save and load the game state

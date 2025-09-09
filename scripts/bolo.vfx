@@ -1,7 +1,7 @@
 class: bolo
     actor derive
 
-bolo.png 32 32 tileset bolo.ts
+bolo.png 32 32 +tileset bolo.ts
 bolo.ts animation bolo-idle.anm 2 frame, 3 0 range,
 bolo.ts animation bolo-bulge.anm 4 5 range,
 bolo.ts animation bolo-burst.anm 6 8 range,

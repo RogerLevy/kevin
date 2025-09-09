@@ -1,6 +1,6 @@
 require scripts\fireball.vfx
 
-flame.png 16 16 tileset flame.ts
+flame.png 16 16 +tileset flame.ts
 
 class: flame
     actor derive
